@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @day.date %>
-</p>
+  <p>
+    <strong>Date:</strong>
+    <%= @day.date %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @day.content %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= @day.content %>
+  </p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @day.user_id %>
-</p>
+  <p>
+    <strong>Owner:</strong>
+    <%= @day.user_id %>
+  </p>
 
-<%= link_to 'Edit', edit_day_path(@day) %> |
-<%= link_to 'Back', days_path %>
+  <%= link_to 'Edit', edit_day_path(@day) %> |
+  <%= link_to 'Back', '/journal' %>
+</div>

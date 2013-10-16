@@ -8,6 +8,9 @@ Oljournal::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'page#index'
 
+  get 'journal' => 'days#index'
+  #get '/days', to: redirect('journal')
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
