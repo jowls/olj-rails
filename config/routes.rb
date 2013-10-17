@@ -9,6 +9,7 @@ Oljournal::Application.routes.draw do
   root 'page#index'
 
   get 'journal' => 'days#index'
+  get 'welcome' => 'page#begin_user_onboard'
   #get '/days', to: redirect('journal')
 
   # Example of regular route:
