@@ -16,5 +16,9 @@
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
+ <!--<% if session['day'] %>-->
+  <p>We're going to save your line for today as soon as you sign up (you will be able to edit this line after registration): <%= session['day'] %></p>
+ <!--<% end %>-->
+
 <%= render "devise/shared/links" %>
 </div>

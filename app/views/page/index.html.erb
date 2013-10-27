@@ -26,33 +26,40 @@
     </ul>
     <p>These moments can provide a powerful connection to a particular place and time. However they can also be haunting, since we're forced to confront the fact that a certain amount of our experiences are beyond our reach.</p>
     <p>As your one line journal begins to fill, it's fascinating to scan through and realize how much recall you have of your daily experiences.</p>
-    <p>Once you see for yourself, you'll be hooked. Please tell us about your day below, and get started right now.</p>
+    <p>Once you see for yourself, you'll be hooked.
+      <% if !user_signed_in? %>
+        Please tell us about your day below, and get started right now.</p>
+      <% else %>
+        </p>
+      <% end %>
   </div>
 </div>
-<div class="container">
-  <div class="panel panel-primary">
-    <!--<div class="panel-heading">-->
-    <!--<h3 class="panel-title">Panel title</h3>-->
-    <!--</div>-->
-    <div class="panel-body">
-      <form class="form-horizontal" action="/welcome" role="form">
-        <div class="form-group">
-          <label for="startDay" class="col-lg-1 control-label">My Day:</label>
-          <div class="col-lg-11">
-            <input type="text" class="form-control" id="startDay" placeholder="Ex: Car needed boost, late for work. Peel Pub with Jim for Lunch; fajitas. Parents sold their house. Watched Breaking Bad with Ash @ night.">
-          </div>
-          <!--<label class="sr-only" for="startDay">Email address</label>-->
-          <!--<input type="test" class="form-control" id="startDay" placeholder="Tell me about your day! (Ex: Car needed boost, late for work. Peel Pub with Jim for Lunch; fajitas. Parents sold their house. Watched Breaking Bad with Ash @ night.">-->
+<% if !user_signed_in? %>
+    <div class="container">
+      <div class="panel panel-primary">
+        <!--<div class="panel-heading">-->
+        <!--<h3 class="panel-title">Panel title</h3>-->
+        <!--</div>-->
+        <div class="panel-body">
+          <form class="form-horizontal" action="/welcome" method="post" role="form">
+            <div class="form-group">
+              <label for="startDay" class="col-lg-1 control-label">My Day:</label>
+              <div class="col-lg-11">
+                <input type="text" class="form-control" name="startDay" placeholder="Ex: Car needed boost, late for work. Peel Pub with Jim for Lunch; fajitas. Parents sold their house. Watched Breaking Bad with Ash @ night.">
+              </div>
+              <!--<label class="sr-only" for="startDay">Email address</label>-->
+              <!--<input type="test" class="form-control" id="startDay" placeholder="Tell me about your day! (Ex: Car needed boost, late for work. Peel Pub with Jim for Lunch; fajitas. Parents sold their house. Watched Breaking Bad with Ash @ night.">-->
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-1 col-lg-11">
+                <button type="submit" class="btn btn-primary btn-lg">Start Now &raquo;</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-          <div class="col-lg-offset-1 col-lg-11">
-            <button type="submit" class="btn btn-primary btn-lg">Start Now &raquo;</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

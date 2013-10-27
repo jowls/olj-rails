@@ -2,6 +2,12 @@ class DaysController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_day, only: [:show, :edit, :update, :destroy]
 
+  def finish_user_onboard
+    @day = Day.create(:date => Day.new, :content => session['day'], :user_id => current_user )
+    @day.save
+    redirect_to('/journal')
+  end
+
   # GET /days
   # GET /days.json
   def index
@@ -13,6 +19,7 @@ class DaysController < ApplicationController
   # GET /days/1
   # GET /days/1.json
   def show
+    @day = current_user.days.find(params[:id])
   end
 
   # GET /days/new

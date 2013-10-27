@@ -3,11 +3,26 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
+#development:
+#  adapter: sqlite3
+#  database: db/development.sqlite3
+#  pool: 5
+#  timeout: 5000
+
+#development:
+#  adapter: sqlserver
+#  mode: ODBC
+#  dsn: Driver={SQL Server Native Client 10.0};Server=tcp:~~~REMOVED~~~,1433;Database=~~~REMOVED~~~;Uid=~~~REMOVED~~~;Pwd=~~~REMOVED~~~;Encrypt=yes;Connection Timeout=30;
+#  azure: true
+#
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: ~~~REMOVED~~~
+  host: ~~~REMOVED~~~
   pool: 5
-  timeout: 5000
+  username: ~~~REMOVED~~~
+  password: ~~~REMOVED~~~
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,8 +33,17 @@ test:
   pool: 5
   timeout: 5000
 
+#production:
+#  adapter: sqlserver
+#  mode: ODBC
+#  dsn: Driver={SQL Server Native Client 10.0};Server=tcp:~~~REMOVED~~~,1433;Database=~~~REMOVED~~~;Uid=~~~REMOVED~~~;Pwd=~~~REMOVED~~~;Encrypt=yes;Connection Timeout=30;
+#  azure: true
+
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: ~~~REMOVED~~~
+  host: ~~~REMOVED~~~
   pool: 5
-  timeout: 5000
+  username: ~~~REMOVED~~~
+  password: ~~~REMOVED~~~

@@ -1,15 +1,22 @@
 Oljournal::Application.routes.draw do
   resources :days
 
-  devise_for :users
+  #devise_for :users
+  # app/config/routes.rb
+  devise_for :users, :controllers => {:registrations => "registrations"}           #http://stackoverflow.com/questions/3546289/override-devise-registrations-controller
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'page#index'
+  get 'about' => 'page#about'
 
   get 'journal' => 'days#index'
-  get 'welcome' => 'page#begin_user_onboard'
+  post 'welcome', to: 'page#begin_user_onboard'
+  get 'finish', to: 'days#finish_user_onboard'
+  post 'finish', to: 'days#finish_user_onboard'
+  #get 'welcome' => 'page#begin_user_onboard'
+  #post 'page#begin_user_onboard'
   #get '/days', to: redirect('journal')
 
   # Example of regular route:
