@@ -4,11 +4,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 #https://github.com/rails-sqlserver/activerecord-sqlserver-adapter/issues/279
-gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter.git'
+#gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter.git'
 #http://stackoverflow.com/questions/17068590/error-sql-h-not-found-when-installing-ruby-odbc-on-ubuntu
-gem 'ruby-odbc'
+#gem 'ruby-odbc'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

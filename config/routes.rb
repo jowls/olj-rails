@@ -10,6 +10,7 @@ Oljournal::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'page#index'
   get 'about' => 'page#about'
+  get 'inspiration' => 'page#inspiration'
 
   get 'journal' => 'days#index'
   post 'welcome', to: 'page#begin_user_onboard'

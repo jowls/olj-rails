@@ -4,6 +4,9 @@ class PageController < ApplicationController
   end
   def about
   end
+  def inspiration
+
+  end
   def begin_user_onboard
     session["day"] = params[:startDay]
     redirect_to('/users/sign_up')
