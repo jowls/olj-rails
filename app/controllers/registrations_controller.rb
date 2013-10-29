@@ -27,9 +27,11 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def add_user
-    @user = resource.id
-    @day = Day.new(:date => Date.today, :content => session['day'], :user_id => @user)
-    @day.save
-    @garbage = nil
+    if !session['day'].to_s.empty?
+      @user = resource.id
+      @day = Day.new(:date => Date.today, :content => session['day'], :user_id => @user)
+      @day.save
+      session['day'] = nil
+    end
   end
 end

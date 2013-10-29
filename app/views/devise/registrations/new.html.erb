@@ -22,7 +22,7 @@
       </div>
   <% end %>
 
-  <!--<% if session['day'] %>-->
+  <!--<% if !session['day'].to_s.empty? %>-->
       <p>We're going to save your line for today as soon as you sign up (you will be able to edit this line after registration): <%= session['day'] %></p>
       <!--<% end %>-->
 
