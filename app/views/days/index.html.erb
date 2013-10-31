@@ -1,6 +1,5 @@
 <div class="container">
   <h1>Journal</h1>
-
   <table class="table table-striped">
     <thead>
     <tr>
@@ -17,9 +16,9 @@
     <% @days.each do |day| %>
         <tr>
           <td class="col-sm-2"><%= get_date_text(day) %></td>
-          <td class = "col-sm-7"><%= day.content %></td>
+          <td class = "col-sm-8"><%= day.content %></td>
           <!--<td><%= day.user_id %></td>-->
-          <td class = "col-sm-1"><%= link_to 'Show', day %></td>
+          <!--<td class = "col-sm-1"><%= link_to 'Show', day %></td>-->
           <td class = "col-sm-1"><%= link_to 'Edit', edit_day_path(day) %></td>
           <td class = "col-sm-1"><%= link_to 'Destroy', day, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

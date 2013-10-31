@@ -40,7 +40,7 @@ class DaysController < ApplicationController
 
     respond_to do |format|
       if @day.save
-        format.html { redirect_to @day, notice: 'Day was successfully created.' }
+        format.html { redirect_to '/journal', notice: 'Day was successfully created.' }
         format.json { render action: 'show', status: :created, location: @day }
       else
         format.html { render action: 'new' }
@@ -54,7 +54,7 @@ class DaysController < ApplicationController
   def update
     respond_to do |format|
       if @day.update(day_params)
-        format.html { redirect_to @day, notice: 'Day was successfully updated.' }
+        format.html { redirect_to '/journal', notice: 'Day was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

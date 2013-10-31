@@ -12,7 +12,7 @@ Oljournal::Application.routes.draw do
   get 'about' => 'page#about'
   get 'inspiration' => 'page#inspiration'
 
-  get 'journal' => 'days#index'
+  get 'journal', to: 'days#index'
   post 'welcome', to: 'page#begin_user_onboard'
   get 'finish', to: 'days#finish_user_onboard'
   post 'finish', to: 'days#finish_user_onboard'
