@@ -7,6 +7,8 @@ class PageController < ApplicationController
   def inspiration
 
   end
+  def poll
+  end
   def begin_user_onboard
     session["day"] = params[:startDay]
     redirect_to('/users/sign_up')

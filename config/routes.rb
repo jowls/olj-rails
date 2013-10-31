@@ -11,6 +11,7 @@ Oljournal::Application.routes.draw do
   root 'page#index'
   get 'about' => 'page#about'
   get 'inspiration' => 'page#inspiration'
+  get 'poll' => 'page#poll'
 
   get 'journal', to: 'days#index'
   post 'welcome', to: 'page#begin_user_onboard'

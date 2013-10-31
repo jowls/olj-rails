@@ -1,4 +1,8 @@
 <div class="container">
+
+  <% if !session['day'].to_s.empty? %>
+      <p style="color: green">We're going to save your line for today as soon as you sign up (you will be able to edit this line after registration): <%= session['day'] %></p>
+  <% end %>
   <h2>Sign up</h2>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -22,9 +26,7 @@
       </div>
   <% end %>
 
-  <!--<% if !session['day'].to_s.empty? %>-->
-      <p>We're going to save your line for today as soon as you sign up (you will be able to edit this line after registration): <%= session['day'] %></p>
-      <!--<% end %>-->
+
 
   <%= render "devise/shared/links" %>
 </div>
