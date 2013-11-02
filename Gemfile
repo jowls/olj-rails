@@ -50,3 +50,6 @@ end
 
 gem 'devise'
 gem 'pg'
+
+gem 'rabl' #Used to build API
+gem 'oj' #JSON parser. Used for rabl

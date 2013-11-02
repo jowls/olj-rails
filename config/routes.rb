@@ -17,6 +17,12 @@ Oljournal::Application.routes.draw do
   post 'welcome', to: 'page#begin_user_onboard'
   get 'finish', to: 'days#finish_user_onboard'
   post 'finish', to: 'days#finish_user_onboard'
+  namespace :api do
+    namespace :v1 do
+      resources :tokens,:only => [:create, :destroy]
+      resources :mobiles
+    end
+  end
   #get 'welcome' => 'page#begin_user_onboard'
   #post 'page#begin_user_onboard'
   #get '/days', to: redirect('journal')
