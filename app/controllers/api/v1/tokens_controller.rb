@@ -1,5 +1,6 @@
 class Api::V1::TokensController < ApplicationController
   skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user_from_token!
   skip_before_filter :authenticate_user!
   respond_to :json
 
@@ -25,7 +26,7 @@ class Api::V1::TokensController < ApplicationController
       return
     end
 
-    @user.ensure_authentication_token!
+    @user.ensure_authentication_token
     @user.save!
 
     if not @user.valid_password?(password)
