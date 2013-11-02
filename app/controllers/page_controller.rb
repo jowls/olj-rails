@@ -1,5 +1,6 @@
 class PageController < ApplicationController
-  protect_from_forgery :except => [:begin_user_onboard]    #http://stackoverflow.com/questions/1177863/how-do-i-ignore-the-authenticity-token-for-specific-actions-in-rails
+  protect_from_forgery :except => [:begin_user_onboard]#http://stackoverflow.com/questions/1177863/how-do-i-ignore-the-authenticity-token-for-specific-actions-in-rails
+  skip_before_filter :authenticate_user!
   def index
   end
   def about
