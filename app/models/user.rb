@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :days
-  before_save :ensure_authentication_token
+  #before_save :ensure_authentication_token
+
+  require 'bcrypt'
 
   def ensure_authentication_token
     if authentication_token.blank?
@@ -17,8 +19,11 @@ class User < ActiveRecord::Base
 
   def generate_authentication_token
     loop do
-      token = Devise.friendly_token
+      devise_token = Devise.friendly_token
+      salted_token =  devise_token + 'jlon' #jlon is the salt
+      token = BCrypt::Password.create(salted_token)
       break token unless User.where(authentication_token: token).first
+      return devise_token
     end
   end
 end

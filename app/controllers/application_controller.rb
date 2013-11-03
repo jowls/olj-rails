@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
   # authentication features to get the token from a header.
   def authenticate_user_from_token!
     user_token = params[:user_token].presence
-    user = user_token && User.find_by_authentication_token(user_token)
+    salted_token = user_token && BCrypt::Password.create(user_token + 'jlon')
+    user = salted_token && User.find_by_authentication_token(salted_token)
 
     if user
 # Notice we are passing store false, so the user is not

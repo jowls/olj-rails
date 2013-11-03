@@ -26,7 +26,10 @@ class Api::V1::MobilesController < ApplicationController
   end
   private
   def restrict_access
-    @valid_user = User.where("authentication_token = ?",params[:at]).first
+    devise_token = params[:at]
+    salted_token =  devise_token + 'jlon' #jlon is the salt
+    token = BCrypt::Password.create(salted_token)
+    @valid_user = User.where("authentication_token = ?",token).first
     head :unauthorized unless @valid_user
   end
 end
