@@ -20,9 +20,11 @@ development:
   encoding: unicode
   database: ~~~REMOVED~~~
   host: ~~~REMOVED~~~
+  port: 5432
   pool: 5
   username: ~~~REMOVED~~~
   password: ~~~REMOVED~~~
+  reconnect: true
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -44,6 +46,8 @@ production:
   encoding: unicode
   database: ~~~REMOVED~~~
   host: ~~~REMOVED~~~
+  port: 5432
   pool: 5
   username: ~~~REMOVED~~~
   password: ~~~REMOVED~~~
+  reconnect: true
