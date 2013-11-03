@@ -20,8 +20,7 @@ class User < ActiveRecord::Base
       devise_token = Devise.friendly_token
       salted_token =  devise_token + 'jlon' #jlon is the salt
       token = BCrypt::Password.create(salted_token)
-      break token unless User.where(authentication_token: token).first
-      return devise_token
+      break devise_token unless User.where(authentication_token: token).first
     end
   end
 end
