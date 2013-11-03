@@ -26,7 +26,7 @@ class Api::V1::TokensController < ApplicationController
       return
     end
 
-    devise_token = @user.ensure_authentication_token
+    devise_token = @user.generate_authentication_token
     @user.save!
 
     if not @user.valid_password?(password)
