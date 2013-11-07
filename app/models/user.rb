@@ -11,15 +11,18 @@ class User < ActiveRecord::Base
 
   def ensure_authentication_token
     if authentication_token.blank?
-      self.authentication_token = generate_authentication_token
+      generate_authentication_token
     end
   end
 
   def generate_authentication_token
     loop do
       devise_token = Devise.friendly_token
-      salted_token =  devise_token + 'jlon' #jlon is the salt
-      token = BCrypt::Password.create(salted_token)
+      #self.salt = BCrypt::Engine.generate_salt
+      #salted_token =  devise_token + 'jlon' #jlon is the salt
+      #token = BCrypt::Password.create(salted_token)
+      token = BCrypt::Engine.hash_secret(devise_token, ENV["SALT"])
+      self.authentication_token = token
       break devise_token unless User.where(authentication_token: token).first
     end
   end

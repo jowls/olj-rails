@@ -21,8 +21,10 @@ Oljournal::Application.routes.draw do
     namespace :v1 do
       resources :tokens,:only => [:create, :destroy]
       resources :mobiles
+      post 'mobiles/addday', to: 'mobiles#addday'
     end
   end
+
   #get 'welcome' => 'page#begin_user_onboard'
   #post 'page#begin_user_onboard'
   #get '/days', to: redirect('journal')
