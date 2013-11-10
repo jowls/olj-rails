@@ -24,7 +24,7 @@ class Api::V1::MobilesController < ApplicationController
     puts @requesting_user.email
     @mobile_days_index  = @requesting_user.days()
   end
-  #curl --data '{"at": "4zwcfQZSPkGsLUHUyxhG", "day": {"date": "2013-11-17","content": "hello"}}' http://localhost:3000/api/v1/mobiles/addday --header "Accept: applicationer "Content-Type: application/json"
+  #curl --data '{"at": "4zwcfQZSPkGsLUHUyxhG", "day": {"date": "2013-11-17","content": "hello"}}' http://localhost:3000/api/v1/mobiles/addday --header "Accept: application/json" --header "Content-Type: application/json"
 
   def addday
     @at = params["at"]
@@ -40,6 +40,16 @@ class Api::V1::MobilesController < ApplicationController
       @newday.user_id = @requesting_user.id
       @newday.save    #todo: come back and catch dups, etc.
       @status = 'Shit looks good'
+    end
+  end
+
+  def alldays
+    @at = params["at"]
+    @token = bcrypt_token(@at)
+    @requesting_user = User.where("authentication_token = ?",@token).first
+    puts @requesting_user.email
+    if !@requesting_user.nil?
+      @alldays = @requesting_user.days()
     end
   end
 

@@ -22,6 +22,7 @@ Oljournal::Application.routes.draw do
       resources :tokens,:only => [:create, :destroy]
       resources :mobiles
       post 'mobiles/addday', to: 'mobiles#addday'
+      post 'mobiles/alldays', to: 'mobiles#alldays'
     end
   end
 
