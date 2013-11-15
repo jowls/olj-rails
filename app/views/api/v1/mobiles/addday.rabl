@@ -1,1 +1,1 @@
-object @status
+object @newday

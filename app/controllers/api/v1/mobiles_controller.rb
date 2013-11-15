@@ -38,8 +38,10 @@ class Api::V1::MobilesController < ApplicationController
       @newday.date = date_temp
       @newday.content = content_temp
       @newday.user_id = @requesting_user.id
-      @newday.save    #todo: come back and catch dups, etc.
-      @status = 'Shit looks good'
+      unless @newday.save!
+        head :unprocessable_entity
+        @errors = @newday.errors.to_s
+      end
     end
   end
 
