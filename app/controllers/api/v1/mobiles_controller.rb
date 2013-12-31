@@ -55,6 +55,31 @@ class Api::V1::MobilesController < ApplicationController
     end
   end
 
+  def editday
+    @at = params["at"]
+    @rails_id = params["rails_id"]
+    @android_updated_at = params["updated_at"]
+    @android_content = params["content"]
+    @token = bcrypt_token(@at)
+    @requesting_user = User.where("authentication_token = ?",@token).first
+    puts @requesting_user.email
+    if !@requesting_user.nil?
+      @day = Day.where("id = ?", @rails_id).first
+      rails_updated = Date.new(@day)
+      android_updated  = Date.new(@android_updated_at)
+      if (rails_updated <= android_updated) && !@day.nil?
+        @day.content = @android_content
+        unless @day.save
+          head :unprocessable_entity
+          @errors = @newday.errors.to_s
+        end
+      else
+        head :unprocessable_entity
+        @errors = "Day has been updated more recently online. Please refresh journal before editing this day."
+      end
+    end
+  end
+
   private
   def restrict_access
     devise_token = params[:at]
