@@ -57,14 +57,14 @@ class Api::V1::MobilesController < ApplicationController
 
   def editday
     @at = params["at"]
-    @rails_id = params["rails_id"]
-    @android_updated_at = params["updated_at"]
-    @android_content = params["content"]
+    @rails_id = params['day']['rails_id']
+    @android_updated_at = params['day']['updated_at']
+    @android_content = params['day']['content']
     @token = bcrypt_token(@at)
     @requesting_user = User.where("authentication_token = ?",@token).first
     puts @requesting_user.email
     if !@requesting_user.nil?
-      @day = Day.where("id = ?", @rails_id).first
+      @day = Day.where("id = ?", @rails_id).first #need to send rails row id from android
       rails_updated = Date.new(@day)
       android_updated  = Date.new(@android_updated_at)
       if (rails_updated <= android_updated) && !@day.nil?
