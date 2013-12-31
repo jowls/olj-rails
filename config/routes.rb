@@ -23,6 +23,7 @@ Oljournal::Application.routes.draw do
       resources :mobiles
       post 'mobiles/addday', to: 'mobiles#addday'
       post 'mobiles/alldays', to: 'mobiles#alldays'
+      post 'mobiles/editday', to: 'mobiles#editday'
     end
   end
 
