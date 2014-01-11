@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  date: 2013-11-17
+  content: hello
+  user_id: 1
+  created_at: 2014-01-10 04:46:37.433502
+  updated_at: 2014-01-10 04:46:37.433502

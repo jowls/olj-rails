@@ -4,6 +4,7 @@ class Api::V1::MobilesController < ApplicationController
   before_filter :restrict_access
   #protect_from_forgery :except => [:create, :show, :index]
   respond_to :json, :xml
+  #TODO: require 'date' Date.parse('2013-11-17')
 
   def index #wut?
     puts "Inside of index MobileController"
@@ -30,7 +31,7 @@ class Api::V1::MobilesController < ApplicationController
     @at = params["at"]
     @token = bcrypt_token(@at)
     @requesting_user = User.where("authentication_token = ?",@token).first
-    puts @requesting_user.email
+    #puts @requesting_user.email
     date_temp = params['day']['date']
     content_temp = params['day']['content']
     if !@requesting_user.nil?
@@ -49,25 +50,31 @@ class Api::V1::MobilesController < ApplicationController
     @at = params["at"]
     @token = bcrypt_token(@at)
     @requesting_user = User.where("authentication_token = ?",@token).first
-    puts @requesting_user.email
+    #puts @requesting_user.email
     if !@requesting_user.nil?
       @alldays = @requesting_user.days()
     end
   end
-
+  #curl --data '{"at":"ZbE5fT_6Tb8sQbF6qdfQ", "day":{"content":"Bevs bd at supper. Crap veg chili. Awesome chicken wings. Test.", "date":"2014-01-01", "rails_d":167}}' http://localhost:3000/api/v1/mobiles/editday --header "Accept: application/json" --header "Content-Type: application/json"
+  #TODO: not working yet but almost, need to ensure token is up to date, also watch out for commas in the content
   def editday
-    @at = params["at"]
+    @at = params['at']
     @rails_id = params['day']['rails_id']
-    @android_updated_at = params['day']['updated_at']
+    @android_updated_at = DateTime.parse(params['day']['updated_at'])
     @android_content = params['day']['content']
     @token = bcrypt_token(@at)
-    @requesting_user = User.where("authentication_token = ?",@token).first
-    puts @requesting_user.email
+    @requesting_user = User.where('authentication_token = ?',@token).first
+    #puts @requesting_user.email
+    #puts @rails_id
     if !@requesting_user.nil?
-      @day = Day.where("id = ?", @rails_id).first #need to send rails row id from android
-      rails_updated = Date.new(@day)
-      android_updated  = Date.new(@android_updated_at)
-      if (rails_updated <= android_updated) && !@day.nil?
+      @day = Day.where('id = ?', @rails_id).first
+      #puts @day.date
+      #puts @day.id
+      rails_updated = @day.date #this is where shit is fucking up
+      android_updated  = @android_updated_at
+      #puts (rails_updated <= android_updated).to_s + ' is the result of the datetime comparison.'
+      #puts (@requesting_user.id == @day.user_id).to_s + ' is the result of the ID comparison.'
+      if (rails_updated <= android_updated) && !@day.nil? && (@requesting_user.id == @day.user_id) #TODO: break this out to give better error messages
         @day.content = @android_content
         unless @day.save
           head :unprocessable_entity

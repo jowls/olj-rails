@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 #https://github.com/rails-sqlserver/activerecord-sqlserver-adapter/issues/279
 #gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter.git'
 #http://stackoverflow.com/questions/17068590/error-sql-h-not-found-when-installing-ruby-odbc-on-ubuntu
@@ -53,3 +53,7 @@ gem 'pg'
 
 gem 'rabl' #Used to build API
 gem 'oj' #JSON parser. Used for rabl
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
