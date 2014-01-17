@@ -23,7 +23,7 @@ Oljournal::Application.configure do
   config.active_record.migration_error = :page_load
 
   # http://stackoverflow.com/questions/13998076/problems-with-resetting-password-devise
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '~~~REMOVED~~~' }
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
