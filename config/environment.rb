@@ -15,3 +15,4 @@ LandingPage::Application.configure do
       :password  => "~~~REMOVED~~~",
       :authentication => 'login'
   }
+end
