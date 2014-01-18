@@ -14,6 +14,11 @@ class DaysController < ApplicationController
     #@days = Day.all
     @day_user = current_user
     @days = @day_user.days
+    respond_to do |format|
+      format.html
+      format.csv { send_data @days.to_csv }
+      format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /days/1

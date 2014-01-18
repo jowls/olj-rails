@@ -4,7 +4,7 @@ require File.expand_path('../application', __FILE__)
 # Initialize the Rails application.
 Oljournal::Application.initialize!
 
-LandingPage::Application.configure do
+Oljournal::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
