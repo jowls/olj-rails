@@ -35,4 +35,20 @@ describe 'APIV1' do
     #puts response.body
     expect(body['day']['content']).to include('test')
   end
+
+  it 'Gets a token and tries to create a day that has an invalid date' do
+    params = {email: 'robert@service.ca', password: '~~~REMOVED~~~'}
+    post '/api/v1/tokens', params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    expect(response.body).to include('token')
+    body = JSON.parse(response.body)
+    expect(response.status).to eq(200)
+    @authentication_token = body['token']
+
+    #lambda do
+    params = {at: @authentication_token, day: {date: '(Choose date)-->', content: 'hello'}}
+
+    post '/api/v1/mobiles/addday', params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    expect(response.status).to eq(422)
+    #end #.should change(Day, :count).by(1)
+  end
 end

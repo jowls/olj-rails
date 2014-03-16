@@ -37,6 +37,10 @@ class Api::V1::MobilesController < ApplicationController
     if !@requesting_user.nil?
       @newday = Day.new
       @newday.date = date_temp
+      if @newday.date.nil?
+        head :unprocessable_entity
+        @errors = @newday.errors.to_s
+      end
       @newday.content = content_temp
       @newday.user_id = @requesting_user.id
       unless @newday.save!
