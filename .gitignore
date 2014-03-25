@@ -32,3 +32,4 @@ pickle-email-*.html
 #config/initializers/secret_token.rb
 .idea/workspace.xml 
 .idea/tasks.xml
+/config/local_env.yml

@@ -1,29 +1,12 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#development:
-#  adapter: sqlite3
-#  database: db/development.sqlite3
-#  pool: 5
-#  timeout: 5000
-
-#development:
-#  adapter: sqlserver
-#  mode: ODBC
-#  dsn: Driver={SQL Server Native Client 10.0};Server=tcp:~~~REMOVED~~~,1433;Database=~~~REMOVED~~~;Uid=~~~REMOVED~~~;Pwd=~~~REMOVED~~~;Encrypt=yes;Connection Timeout=30;
-#  azure: true
-#
 development:
   adapter: postgresql
   encoding: unicode
-  database: ~~~REMOVED~~~
-  host: ~~~REMOVED~~~
+  database: <%= ENV["DB_NAME_DEV"] %>
+  host: <%= ENV["DB_HOST_DEV"] %>
   port: 5432
   pool: 5
-  username: ~~~REMOVED~~~
-  password: ~~~REMOVED~~~
+  username: <%= ENV["DB_USER_DEV"] %>
+  password: <%= ENV["DB_PW_DEV"] %>
   reconnect: true
   variables:       #https://groups.google.com/forum/#!topic/ruby-pg/hH6wGQiexKA
     tcp_keepalives_idle: 60
@@ -39,21 +22,15 @@ test:
   pool: 5
   timeout: 5000
 
-#production:
-#  adapter: sqlserver
-#  mode: ODBC
-#  dsn: Driver={SQL Server Native Client 10.0};Server=tcp:~~~REMOVED~~~,1433;Database=~~~REMOVED~~~;Uid=~~~REMOVED~~~;Pwd=~~~REMOVED~~~;Encrypt=yes;Connection Timeout=30;
-#  azure: true
-
 production:
   adapter: postgresql
   encoding: unicode
-  database: ~~~REMOVED~~~
-  host: ~~~REMOVED~~~
+  database: <%= ENV["DB_NAME_PROD"] %>
+  host: <%= ENV["DB_HOST_PROD"] %>
   port: 5432
   pool: 5
-  username: ~~~REMOVED~~~
-  password: ~~~REMOVED~~~
+  username: <%= ENV["DB_USER_PROD"] %>
+  password: <%= ENV["DB_PW_PROD"] %>
   reconnect: true
   variables:
     tcp_keepalives_idle: 60

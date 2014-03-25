@@ -3,12 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-# Use sqlite3 as the database for Active Record
-#https://github.com/rails-sqlserver/activerecord-sqlserver-adapter/issues/279
-#gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter.git'
-#http://stackoverflow.com/questions/17068590/error-sql-h-not-found-when-installing-ruby-odbc-on-ubuntu
-#gem 'ruby-odbc'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'
 
@@ -17,9 +11,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.1'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,20 +29,16 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby' #, '~> 3.0.0'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 gem 'devise'
 gem 'pg'
-
 gem 'rabl' #Used to build API
 gem 'oj' #JSON parser. Used for rabl
+gem 'pushmeup' #Used for GCM push notifications
+gem 'whenever' #Cron scheduling
+gem 'capistrano', '~> 3.1.0' #Deployment
 
 group :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
