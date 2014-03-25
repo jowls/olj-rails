@@ -38,7 +38,17 @@ gem 'rabl' #Used to build API
 gem 'oj' #JSON parser. Used for rabl
 gem 'pushmeup' #Used for GCM push notifications
 gem 'whenever' #Cron scheduling
-gem 'capistrano', '~> 3.1.0' #Deployment
+gem 'capistrano', '~> 3.0.1'
+gem 'net-ssh', '~> 2.8.1', :git => 'https://github.com/net-ssh/net-ssh' #Need 2.8.1 or greater to fix issue with ssh
+
+# rails specific capistrano funcitons
+gem 'capistrano-rails', '~> 1.1.0'
+
+# integrate bundler with capistrano
+gem 'capistrano-bundler'
+
+# if you are using RBENV
+#gem 'capistrano-rbenv', '~> 2.0'
 
 group :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
