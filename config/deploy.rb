@@ -8,20 +8,12 @@
 
 # set :format, :pretty
 set :log_level, :debug
-# set :pty, true
 
-# set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
 set :pty, true
 set :application, 'olj'
 set :user, '~~~REMOVED~~~'
 set :password, '~~~REMOVED~~~'
 set :use_sudo, true
-#set :ssh_user, '~~~REMOVED~~~'
-#set :ssh_password, '~~~REMOVED~~~'
 
 # setup repo details
 set :scm, :git
@@ -107,6 +99,14 @@ task :restart do
   run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
 end
 namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
   # make sure we're deploying what we think we're deploying
   #before :deploy, "deploy:check_revision"
   # only allow a deploy with passing tests to deployed
