@@ -103,9 +103,12 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
+      # execute :touch, release_path.join('tmp/restart.txt')
+      sudo "service nginx restart"
+      #run "touch #{current_release}/tmp/restart.txt"
     end
   end
+
 
   # make sure we're deploying what we think we're deploying
   #before :deploy, "deploy:check_revision"
