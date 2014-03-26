@@ -17,3 +17,4 @@ set :stage, :production
 # extended properties on the server.
 # server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 server '~~~REMOVED~~~', user: '~~~REMOVED~~~', roles: %w{web app} #, my_property: :my_value
+# server '~~~REMOVED~~~', user: '~~~REMOVED~~~', roles: %w{db} #, my_property: :my_value

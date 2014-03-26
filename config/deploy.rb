@@ -99,6 +99,7 @@ task :restart do
   run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
 end
 namespace :deploy do
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -116,6 +117,7 @@ namespace :deploy do
   # before :deploy, "deploy:run_tests"
   # compile assets locally then rsync
   #after 'deploy', 'deploy:symlink:shared'
+  #after 'deploy', 'deploy:migrate'
   after 'deploy', 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end

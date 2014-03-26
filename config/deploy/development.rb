@@ -17,3 +17,4 @@ set :stage, :development
 # something that quacks like a hash can be used to set
 # extended properties on the server.
 server '~~~REMOVED~~~', user: '~~~REMOVED~~~', roles: %w{web app} #, my_property: :my_value
+#server '~~~REMOVED~~~', user: '~~~REMOVED~~~', roles: %w{db} #, my_property: :my_value

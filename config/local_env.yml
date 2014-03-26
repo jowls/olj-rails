@@ -12,7 +12,7 @@ RAILS_SECRET_KEY_BASE: ENV["RAILS_SECRET_KEY_BASE"]
 
 #GCM KEYS - this is the apiKey obtained from here https://code.google.com/apis/console/
 GCM_API_KEY_DEV: 'AIzaSyDYFmuOQ-LZhiaMYjcNlYpq0HOeQRhtMys'
-GCM_API_KEY_PROD: 'NONE_YET'
+GCM_API_KEY_PROD: 'AIzaSyDYFmuOQ-LZhiaMYjcNlYpq0HOeQRhtMys'
 
 #MOBILES_CONTROLLER.RB (BCRYPT PASSWORD SALT)
 SALT: ENV["SALT"]
