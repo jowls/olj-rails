@@ -50,6 +50,11 @@ gem 'capistrano-bundler'
 # if you are using RBENV
 #gem 'capistrano-rbenv', '~> 2.0'
 
+# scheduling gcm pushes
+#gem 'whenever', :require => false
+
+gem 'rufus-scheduler'
+
 group :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'sqlite3'
