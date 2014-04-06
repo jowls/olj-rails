@@ -19,15 +19,11 @@ Things you may want to cover:
 
 rspec spec/requests/api_v1_spec.rb
 
-* How to test scheduled tasks in development
-
-whenever --update-crontab --set environment='development'
-
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
-* ...
+
 
 
 Please feel free to use a different markup language if you do not plan to run
