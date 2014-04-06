@@ -29,17 +29,14 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby' #, '~> 3.0.0'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
 gem 'devise'
-gem 'pg'
+gem 'pg' #Postgres adapter
 gem 'rabl' #Used to build API
 gem 'oj' #JSON parser. Used for rabl
 gem 'pushmeup' #Used for GCM push notifications
-gem 'whenever' #Cron scheduling
+#gem 'whenever' #Cron scheduling
 gem 'capistrano', '~> 3.0.1'
-gem 'net-ssh', '~> 2.8.1', :git => 'https://github.com/net-ssh/net-ssh' #Need 2.8.1 or greater to fix issue with ssh
+gem 'net-ssh' #, '~> 2.8.1', :git => 'https://github.com/net-ssh/net-ssh' #Need 2.8.1 or greater to fix issue with ssh
 
 # rails specific capistrano funcitons
 gem 'capistrano-rails', '~> 1.1.0'
@@ -48,12 +45,12 @@ gem 'capistrano-rails', '~> 1.1.0'
 gem 'capistrano-bundler'
 
 # if you are using RBENV
-#gem 'capistrano-rbenv', '~> 2.0'
+gem 'capistrano-rbenv', '~> 2.0'
 
 # scheduling gcm pushes
-#gem 'whenever', :require => false
-
 gem 'rufus-scheduler'
+gem 'tzinfo'
+gem 'tzinfo-data'
 
 group :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
