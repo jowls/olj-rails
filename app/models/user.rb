@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   #http://stackoverflow.com/questions/6216969/how-to-implement-rufus-scheduler-in-rails
   def self.send_daily_push
+    logger.info 'Started rufus task send_daily_push.'
     day_seconds = 24 * 60 * 60
     forty_hrs_s = 40 * 60 * 60
     eighty_eight_hrs_s = 93 * 60 * 60
@@ -45,8 +46,10 @@ class User < ActiveRecord::Base
           now_corrected = now.in_time_zone(zone).time
           diff = now_corrected - most_recent
           elapsed_seconds = (diff * day_seconds).to_i
+          logger.info 'Elapsed seconds: ' + elapsed_seconds.to_s + ' for user with regid: ' + user.regid
           if (elapsed_seconds - forty_hrs_s).abs < fifteen_min_s
             destination = user.regid
+            logger.info 'Sending 1day reminder to ' + destination
             # can be an string or an array of strings  > (40*)containing the regIds of the devices you want to send
             data = {message => "You didn't write anything yesterday. Tell us what you did?", :title => 'One Line Journal'}
             # must be an hash with all values you want inside you notification
@@ -54,16 +57,19 @@ class User < ActiveRecord::Base
           end
           if (elapsed_seconds - eighty_eight_hrs_s).abs < fifteen_min_s
             destination = user.regid
+            logger.info 'Sending 3day reminder to ' + destination
             data = {:message => 'Last entry was three day ago. Want to update your journal now?', :title => 'One Line Journal'}
             GCM.send_notification( destination, data )
           end
           if (elapsed_seconds - week_hrs_s).abs < fifteen_min_s
             destination = user.regid
+            logger.info 'Sending 7day reminder to ' + destination
             data = {:message => 'This past week is empty. Want to update your journal?', :title => 'One Line Journal'}
             GCM.send_notification( destination, data )
           end
         end
       end
     end
+    logger.info 'Finished rufus task send_daily_push.'
   end
 end
