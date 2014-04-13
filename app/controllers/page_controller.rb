@@ -10,7 +10,8 @@ class PageController < ApplicationController
   end
 
   def send_gcm
-    destination = ["APA91bFsCrOdjTRs7YT3kxs7cidz6HYuX_NW8j_RrKFZXBKnA2mBmcrBuCiQ5ZVU6cHF49q2aXPTnrwDWx2mWXoPHRU0BVNxLiBaX4Pwbpf1WAlmE_t6wNor-CuXH5fsyF1X84EDP3mvouBhmfBYeVXKhKesRDQBrnN1jphv73oy9J4G7i2Q27c"]
+    destination = "APA91bH_8MOFwo_RGZj_TCFBFnN7meOxYxi4uADue1_lVOmiOh7pXmJ1vXGtQXz7a8Kbg_Er-vZyIC1B0PnryRCp8AXHcxW7ClKNwpFR5YltV-OhRq6m9_bUcJMAKt9wQfqQR51_7Jd9yDloNqHcSg1rcAupqXPuZLoJ2gCzcXbFijkm6uXIrbo" #["APA91bFsCrOdjTRs7YT3kxs7cidz6HYuX_NW8j_RrKFZXBKnA2mBmcrBuCiQ5ZVU6cHF49q2aXPTnrwDWx2mWXoPHRU0BVNxLiBaX4Pwbpf1WAlmE_t6wNor-CuXH5fsyF1X84EDP3mvouBhmfBYeVXKhKesRDQBrnN1jphv73oy9J4G7i2Q27c"]
+    #de
     # can be an string or an array of strings containing the regIds of the devices you want to send
 
     data = {:message => "You didn't write anything yesterday. Tell us what you did?", :title => "One Line Journal"}
