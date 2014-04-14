@@ -47,25 +47,29 @@ class User < ActiveRecord::Base
           diff = now_corrected - most_recent
           elapsed_seconds = (diff * day_seconds).to_i
           logger.info 'Elapsed seconds: ' + elapsed_seconds.to_s + ' for user with regid: ' + user.regid
+          # options for the notification
           if (elapsed_seconds - oneday_s).abs < fifteen_min_s
+            options = {:delay_while_idle => true}
             destination = user.regid
             logger.info 'Sending 1day reminder to ' + destination
             # can be an string or an array of strings  > (40*)containing the regIds of the devices you want to send
             data = {:message => "You didn't write anything yesterday. Tell us what you did?", :title => 'One Line Journal'}
             # must be an hash with all values you want inside you notification
-            GCM.send_notification( destination, data )
+            GCM.send_notification( destination, data, options )
           end
           if (elapsed_seconds - threeday_s).abs < fifteen_min_s
+            options = {:delay_while_idle => true}
             destination = user.regid
             logger.info 'Sending 3day reminder to ' + destination
             data = {:message => 'Last entry was three day ago. Want to update your journal now?', :title => 'One Line Journal'}
-            GCM.send_notification( destination, data )
+            GCM.send_notification( destination, data, options )
           end
           if (elapsed_seconds - week_hrs_s).abs < fifteen_min_s
+            options = {:delay_while_idle => true}
             destination = user.regid
             logger.info 'Sending 7day reminder to ' + destination
             data = {:message => 'This past week is empty. Want to update your journal?', :title => 'One Line Journal'}
-            GCM.send_notification( destination, data )
+            GCM.send_notification( destination, data, options )
           end
         end
       end
