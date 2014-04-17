@@ -146,6 +146,8 @@ common: &default_settings
     # SQL queries.  Only supported in mysql and postgres.  Should be
     # set to false when using other adapters.
     # explain_enabled: true
+    #only temporarily set to false because of a security vulnerability
+    explain_enabled: false
 
     # Threshold for query execution time below which query plans will
     # not be captured.  Relevant only when `explain_enabled` is true.
