@@ -51,6 +51,9 @@ gem 'capistrano-rbenv', '~> 2.0'
 gem 'rufus-scheduler'
 gem 'tzinfo'
 gem 'tzinfo-data'
+group :production do
+  gem 'newrelic_rpm'
+end
 
 group :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
