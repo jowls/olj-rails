@@ -16,8 +16,8 @@ class PageController < ApplicationController
 
     data = {:message => "You didn't write anything yesterday. Tell us what you did?", :title => "One Line Journal"}
     # must be an hash with all values you want inside you notification
-
-    GCM.send_notification( destination, data )
+    options = {:delay_while_idle => true}
+    GCM.send_notification( destination, data, options )
     # Notification with custom information
 
     #GCM.send_notification( destination, data, :collapse_key => "placar_score_global", :time_to_live => 3600, :delay_while_idle => false )

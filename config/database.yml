@@ -29,6 +29,7 @@ production:
   host: <%= ENV["DB_HOST_PROD"] %>
   port: 5432
   pool: 5
+  reaping_frequency: 10
   username: <%= ENV["DB_USER_PROD"] %>
   password: <%= ENV["DB_PW_PROD"] %>
   reconnect: true
